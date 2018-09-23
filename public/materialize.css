@@ -1,4 +1,15 @@
+/* font-family: 'Roboto', sans-serif;
+font-family: 'Roboto Condensed', sans-serif;
+font-family: 'Roboto Mono', monospace; */
+
 body {
     margin: 20px !important;
     background-color: bisque !important;
+}
+/* home page */
+.home_h{
+    font-family: 'Roboto', sans-serif;
+}
+.roboto_mono{
+    font-family: 'Roboto Mono', monospace;
 }

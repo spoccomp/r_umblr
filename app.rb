@@ -114,7 +114,7 @@ get '/my_posts' do
   erb :my_posts
 end
 post '/my_posts' do
-  
+
   erb :my_posts
 end
  post '/dashboard' do
@@ -160,6 +160,7 @@ end
     #   resets session to nil
     session[:user_id] = nil
     erb :cancel
+    redirect '/home'
   end
 
   get '/logout' do

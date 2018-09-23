@@ -24,10 +24,10 @@
 
 <nav>
     <div class="nav-wrapper teal lighten-2">
-      <a href="#" class="brand-logo ">Code//Talk</a>
+      <a href="/home" class="brand-logo home_h">Code//Talk</a>
          <%# <img id="logoThis" class="responsive-img logo" src="bakery_logo.jpg" alt="logo">  %>
      
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <ul id="nav-mobile" class="right hide-on-med-and-down home_h">
         <li><a href="/home">Home</a></li>
         <% if !current_user %>
           <li><a href="/create_account">Create Account</a></li>
@@ -42,5 +42,20 @@
     </div>
   </nav>
     <%= yield%>
+
+     <footer>
+        
+      
+   <div class="footer-copyright center">
+     
+            <div class="container">
+            <p class="roboto_mono">Learn, read, apply, code, repeat...</p>
+
+            <h6 class="roboto_mono">Thank you for visiting...Now go code something!</h6>
+            <p class="roboto_mono">© 2018 Copyright </p>
+            </div>
+          </div>
+          
+</footer>
 </body>
 </html>

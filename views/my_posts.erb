@@ -1,25 +1,30 @@
-<h1>Welcome to Code//Talk </h1>
+<h1 class="center home_h">Welcome to Code//Talk </h1>
 
 <%all_users = User.all%>
 <%total_users = all_users.size%>
-<h3>History of a member's posts</h3>
+<h3 class="home_h">History of a member's posts</h3>
 
-<p>List of users</p>
-<p>There are <%=total_users%> users </p>
-    <% all_users .each do |user| %>
+<p class="roboto_mono">List of users</p>
+<p class="roboto_mono">There are <%=total_users%> users </p>
+<div class="roboto_mono">
+   <% all_users .each do |user| %>
         Username: <%= user.username %><br>
         User ID: <%=user.id %> <br><br>
     <% end %>
-  
+ </div> 
 
-<form action="/my_posts" method="post">
+<form class="roboto_mono" action="/my_posts" method="post">
     <input type="number" name="search" id="" placeholder="Search by ID"><br>
     <input type="submit" value="Search">
 </form>
-<p>You selected: <%=params[:search]%></p>
+<p class="roboto_mono">You selected: <%=params[:search]%></p>
 <%p params[:search]%>
-   <%my_posts = Post.where("users_id = ?", params[:search])%>
-<h3>User posts</h3>
+
+<%my_posts = Post.where("users_id = ?", params[:search])%>
+<%my_total_posts = my_posts.size%>
+<h3 class="home_h">User posts</h3>
+<p class="roboto_mono">I have <%=my_total_posts%> posts </p>
+<div class="roboto_mono">
         <% my_posts.each do |post| %>
             Post Id: <%= post.id  %> <br>
             Title: <%= post.title %><br>
@@ -29,12 +34,12 @@
             <%user=User.find(x)%>
             Username: <%= user.username %> <br> <br>    
          <% end %>
-
+</div>
 <%all=Post.all%>
 <%total_post = all.size%>
-<h3>All Posts</h3>
-<p>There are <%=total_post%> posts</p>
-       
+<h3 class="home_h">All Posts</h3>
+<p class="roboto_mono">There are <%=total_post%> posts</p>
+<div class="roboto_mono">     
         <% all.each do |post| %>
             Post Id: <%= post.id  %> <br>
             Title: <%= post.title %><br>
@@ -44,4 +49,4 @@
             <%user=User.find(x)%>
             Username: <%= user.username %> <br> <br>    
          <% end %>
-   
+</div>

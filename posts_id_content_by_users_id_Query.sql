@@ -1,0 +1,1 @@
+select "id","users_id","content" from posts 

@@ -1,0 +1,90 @@
+<h1>Welcome to Code//Talk Dashboard</h1>
+
+<h3>User Profile</h3>
+
+
+Code Language: <%= @player.code_lang%><br>
+User ID: <%= @player.id%><br>
+Username: <%= @player.username %><br>
+Password: <%= @player.password %><br>
+First Name: <%= @player.first_name  %><br>
+Last Name: <%= @player.last_name %><br>
+Email: <%= @player.email%><br>
+Birthday: <%= @player.birthday %>
+
+
+
+
+<%# This is a button - work in progress for deleting a user and their posts %>
+<form action="/cancel" method="post">
+    <label>To cancel your account click button below...</label>
+    <input type="submit" value="Goodbye!">
+</form>
+
+
+<h3>The team</h3>
+<%all_users = User.all%>
+<%total_users = all_users.size%>
+<p>There are <%=total_users%> users </p>
+<%if @users!=nil%>
+    <% @users.each do |user| %>
+        Username: <%= user.username %><br>
+        Email: <a href="/email" target="_top"><%= user.email %></a> <br><br>
+    <% end %>
+<% end %>
+<p> Click link to send an email to your buddy.</p>
+
+<h1>Lets talk code</h1>
+<%# new posts %>
+<form action="/dashboard" method="post">
+  
+  <input type="text" name="title" id="" placeholder="Title of your post"><br>
+  
+  <textarea name="content" id="" cols="30" rows="20"placeholder="Type your post here"></textarea>
+  <input type="submit" value="Create post">
+</form>
+
+
+
+<%all=Post.all%>
+<%total_post = all.size%>
+<h3>History - all posts</h3>
+<p>There are <%=total_post%> posts</p>
+    <%if @posts!=nil%>
+        <% @posts.each do |post| %>
+            Post Id: <%= post.id  %> <br>
+            Title: <%= post.title %><br>
+            Content: <%= post.content %> <br>
+            <%x=post.users_id%>
+            User Id: <%=post.users_id%><br>
+            <%user=User.find(x)%>
+            Username: <%= user.username %> <br> <br>    
+         <% end %>
+    <% end %>
+
+<%total_my_post = @user_posts.size%>
+<h3>History - my posts</h3>
+<p>My total posts are: <%=total_my_post%></p>
+ <%if @user_posts!=nil%>
+        <% @user_posts.each do |post| %>
+            Post Id: <%= post.id  %> <br>
+            Title: <%= post.title %><br>
+            Content: <%= post.content %> <br>
+            <%x = post.users_id%>
+            User Id: <%=post.users_id%><br>
+            <%user=User.find(x)%>
+            Username: <%= user.username %> <br> <br>    
+         <% end %>
+    <% end %>
+
+
+<h3>Click a user number to go the posts page</h3>
+ <%if @users!=nil%>
+    <% @users.each do |user| %>
+        Username: <%= user.username %><br>
+        User ID: <a href="/my_posts"><%=user.id %></a> <br><br>
+    <% end %>
+<% end %>
+  
+
+

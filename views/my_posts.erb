@@ -1,0 +1,47 @@
+<h1>Welcome to Code//Talk </h1>
+
+<%all_users = User.all%>
+<%total_users = all_users.size%>
+<h3>History of a member's posts</h3>
+
+<p>List of users</p>
+<p>There are <%=total_users%> users </p>
+    <% all_users .each do |user| %>
+        Username: <%= user.username %><br>
+        User ID: <%=user.id %> <br><br>
+    <% end %>
+  
+
+<form action="/my_posts" method="post">
+    <input type="number" name="search" id="" placeholder="Search by ID"><br>
+    <input type="submit" value="Search">
+</form>
+<p>You selected: <%=params[:search]%></p>
+<%p params[:search]%>
+   <%my_posts = Post.where("users_id = ?", params[:search])%>
+<h3>User posts</h3>
+        <% my_posts.each do |post| %>
+            Post Id: <%= post.id  %> <br>
+            Title: <%= post.title %><br>
+            Content: <%= post.content %> <br>
+            <%x = post.users_id%>
+            User Id: <%=post.users_id%><br>
+            <%user=User.find(x)%>
+            Username: <%= user.username %> <br> <br>    
+         <% end %>
+
+<%all=Post.all%>
+<%total_post = all.size%>
+<h3>All Posts</h3>
+<p>There are <%=total_post%> posts</p>
+       
+        <% all.each do |post| %>
+            Post Id: <%= post.id  %> <br>
+            Title: <%= post.title %><br>
+            Content: <%= post.content %> <br>
+            <%x = post.users_id%>
+            User Id: <%=post.users_id%><br>
+            <%user=User.find(x)%>
+            Username: <%= user.username %> <br> <br>    
+         <% end %>
+   

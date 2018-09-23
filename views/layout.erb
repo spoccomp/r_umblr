@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+   <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="/main.css" />
+    <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
+  <script type="text/javascript" src="/main.js" defer></script>
+    
+    <title>Code//Talk</title>
+</head>
+<body>
+
+<nav>
+    <div class="nav-wrapper teal lighten-2">
+      <a href="#" class="brand-logo ">Code//Talk</a>
+         <%# <img id="logoThis" class="responsive-img logo" src="bakery_logo.jpg" alt="logo">  %>
+     
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/home">Home</a></li>
+        <% if !current_user %>
+          <li><a href="/create_account">Create Account</a></li>
+          <li><a href="/login">Login</a></li>
+        <% end %>
+        <% if current_user %>
+          <li><a href="/dashboard">Dashboard</a></li>
+          <li><a href="/logout">LogOut</a></li>
+        <% end %>
+        
+      </ul>
+    </div>
+  </nav>
+    <%= yield%>
+</body>
+</html>

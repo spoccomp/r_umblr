@@ -1,0 +1,42 @@
+<h1>Code//Talk</h1>
+
+<% if @message %>
+  <p><%= @message %></p>
+<% end %>
+
+<h3>List of users</h3>
+
+
+<% user.each do |user| %>
+  <%= user.username %><br>
+  <%= user.email %><br>
+<% end %>
+
+<P>MAKE USERNAME CLICKABLE TO LEAVE A MESSAGE</P>
+
+ <%if @my_posts!=nil%>
+        <% @my_posts.each do |post| %>
+            Post Id: <%= post.id  %> <br>
+            Title: <%= post.title %><br>
+            Content: <%= post.content %> <br>
+            <%x = post.users_id%>
+            User Id: <%=post.users_id%><br>
+            <%user=User.find(x)%>
+            Username: <%= user.username %> <br> <br>    
+         <% end %>
+    <% end %>
+
+
+  <form action="/dashboard" method="post">
+  <select class="browser-default" id="my_select" >
+    <option value="" disabled selected>Choose your friend</option>
+        <%if @users!=nil%>
+            <%@users.each do |user|%>
+                <option value="<%=@value = user.id%>"><%=user.id%> <%=user.username%></option>
+                
+            <%end%>
+        <%end%>
+        <p><%puts @value%></p>
+    </select>
+    <input type="submit" value="Display post">
+</form>   

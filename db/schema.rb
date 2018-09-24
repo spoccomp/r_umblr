@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_21_135939) do
+ActiveRecord::Schema.define(version: 2018_09_24_163418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,5 +35,4 @@ ActiveRecord::Schema.define(version: 2018_09_21_135939) do
     t.datetime "created_at"
   end
 
-  add_foreign_key "posts", "users", column: "users_id", name: "user_idFK", on_delete: :cascade
 end

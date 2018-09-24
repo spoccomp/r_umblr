@@ -3,7 +3,7 @@ require 'pg'
 
 
 class User < ActiveRecord::Base
-  has_many :posts, dependent: :destroy
+  has_many :posts, dependent: :delete_all
 end
 
 class Post < ActiveRecord::Base

@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sendgrid-ruby'
 require_relative 'models'
 
+
 configure :development do
   set :database, 'postgresql:rumblr-project'
 end
@@ -10,6 +11,8 @@ configure :production do
   #   check Settings > Reveal Config Vars on your heroku app admin panel
   set :database, ENV["DATABASE_URL"]
 end
+
+
 include SendGrid
 
 set :sessions, true
@@ -74,6 +77,7 @@ post '/created' do
 end
 
  get '/dashboard' do
+  
   @player = User.find(session[:user_id])
   @users = User.all
   # displays all post history
@@ -86,35 +90,7 @@ end
   @user_posts= Post.where("users_id = ?", session[:user_id])
   puts @user_posts
   puts "///////////////////////////////////////"
-# display other user's posts
 
-# the logic is on dashboard erb member's posts
-# @user_array =[]
-# @posts_array =[]
-# @users.each do |user|
-#   @user_array.push(user)
-# end
-# @posts.each do |post|
-#   @posts_array.push(post)
-# end
-# puts @user_array.to_s
-# puts @posts_array.to_s
-# @my_posts = Post.where("users_id = ?", @users.id)
-# puts @my_posts
-# puts @value
-
-# select "id","users_id","content" from posts where users_id = 2
-# @my_posts = []
-# result = ActiveRecord::Base.connection.exec_query('SELECT id, users_id, content FROM posts')
-# result.each do |row|
-#   @my_posts.push(row)
-# end
-# puts @my_posts.to_a
-
-
-# test = Post.find_by_sql("SELECT id, users_id, content FROM posts
-#   where users_id = '#{params[:user_select]}'")
-# puts test
   erb :dashboard
  end
 get '/my_posts' do
@@ -135,39 +111,20 @@ end
   
  end
   get '/cancel' do
+    @userID = User.find(session[:user_id])
+    # @postID = Post.find(users_id: @userID)
     erb :cancel
   end
 
-  post '/cancel' do
+post'/cancel' do
     puts "//////////////////////////////"
     # working on to delete user and their posts ***************
-     userID = session[:user_id]
-      puts userID 
-    
-    # p = Post.find_by users_id: userID 
-    # puts posts
-    # puts p
-    # user = User.find(userID) && Post.find( posts.users_id)
-    # user = User.find(userID)
-#  HINT: Perhaps you meant to reference the column "posts.users_id". : SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1
-    #  delete the user record and posts 
-    # user.destroy
-    # post.destroy
-  #  @posts.each do |post|
-  #   puts post.id
-  #   puts post.title
-  #   puts post.users_id
-  #   x = post.users_id
-  #   user = User.find(x)
-  #   puts user.username
-  #  end
-
-   
-    
-    #   resets session to nil
+    @userID = User.find(session[:user_id])
+    # @postID = Post.find(users_id: @userID)
+    @userID.delete
+    # @postID.delete
     session[:user_id] = nil
-    erb :cancel
-    redirect '/home'
+   redirect '/home'
   end
 
   get '/logout' do

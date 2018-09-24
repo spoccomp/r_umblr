@@ -11,15 +11,16 @@ First Name: <%= @player.first_name  %><br>
 Last Name: <%= @player.last_name %><br>
 Email: <%= @player.email%><br>
 Birthday: <%= @player.birthday %>
+
+
 </div>
 
 
-
-<%# This is a button - work in progress for deleting a user and their posts %>
+<div>
 <form class="roboto_mono" action="/cancel" method="post">
-    <label>To cancel your account click button below...</label>
     <input type="submit" value="Goodbye!">
 </form>
+</div>
 
 
 <h3 class="home_h">The team</h3>
@@ -39,9 +40,7 @@ Birthday: <%= @player.birthday %>
 <h1 class="center home_h">Lets talk code</h1>
 <%# new posts %>
 <form class="roboto_mono" action="/dashboard" method="post">
-  
   <input type="text" name="title" id="" placeholder="Title of your post"><br>
-  
   <textarea name="content" id="" cols="30" rows="20"placeholder="Type your post here"></textarea>
   <input type="submit" value="Create post">
 </form>
@@ -82,7 +81,7 @@ Birthday: <%= @player.birthday %>
     <% end %>
 </div>
 
-<h3 class="home_h">Click a user number to go the posts page</h3>
+<h3 class="home_h">Click a user number to view the posts page</h3>
  <div class="roboto_mono">
  <%if @users!=nil%>
     <% @users.each do |user| %>

@@ -2,7 +2,14 @@ require 'sinatra'
 require 'sendgrid-ruby'
 require_relative 'models'
 
-
+configure :development do
+  set :database, 'postgresql:rumblr-project'
+end
+configure :production do
+  # this environment variable is auto generated/set by heroku
+  #   check Settings > Reveal Config Vars on your heroku app admin panel
+  set :database, ENV["postgres://kfvjkfyvloikul:e522cfb821ae1e6bc42455dc7bcf165068a36ee8ee3eac8a009d92ffd8d380c2@ec2-174-129-18-98.compute-1.amazonaws.com:5432/d1rj3f1is236d0"]
+end
 include SendGrid
 
 set :sessions, true

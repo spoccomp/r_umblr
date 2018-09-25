@@ -121,7 +121,7 @@ post'/cancel' do
     # working on to delete user and their posts ***************
     @userID = User.find(session[:user_id])
     # @postID = Post.find(users_id: @userID)
-    @userID.delete
+    @userID.destroy
     # @postID.delete
     session[:user_id] = nil
    redirect '/home'

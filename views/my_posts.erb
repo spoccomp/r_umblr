@@ -1,5 +1,5 @@
 <h1 class="center home_h">Welcome to Code//Talk </h1>
-
+<hr> 
 <%all_users = User.all%>
 <%total_users = all_users.size%>
 <h3 class="home_h">History of a member's posts</h3>
@@ -23,7 +23,9 @@
 <%my_posts = Post.where("users_id = ?", params[:search])%>
 <%my_total_posts = my_posts.size%>
 <h3 class="home_h">User posts</h3>
-<p class="roboto_mono">I have <%=my_total_posts%> posts </p>
+
+
+<p class="roboto_mono"> <%=my_total_posts%> posts </p>
 <div class="roboto_mono">
         <% my_posts.each do |post| %>
             Post Id: <%= post.id  %> <br>

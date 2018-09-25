@@ -1,5 +1,9 @@
 <h1 class="center home_h">Welcome to Code//Talk Dashboard</h1>
-
+<hr> 
+<div class="center">
+    <img class=" dash_img_1 " src="/computer-coding-chris-pondoc-2-638.jpg" alt="">
+</div>
+<%# user profile %>
 <h3 class="home_h">User Profile</h3>
 
 <div class="roboto_mono">
@@ -11,18 +15,17 @@ First Name: <%= @player.first_name  %><br>
 Last Name: <%= @player.last_name %><br>
 Email: <%= @player.email%><br>
 Birthday: <%= @player.birthday %>
-
-
 </div>
 
-
+<%# delete account %>
 <div>
+<h6 class="roboto_mono" >To delete your account click goodbye button below.</h6>
 <form class="roboto_mono" action="/cancel" method="post">
     <input type="submit" value="Goodbye!">
 </form>
 </div>
 
-
+<%# display the team and click email address to create an email %>
 <h3 class="home_h">The team</h3>
 <%all_users = User.all%>
 <%total_users = all_users.size%>
@@ -38,6 +41,11 @@ Birthday: <%= @player.birthday %>
 <p class="roboto_mono"> Click link to send an email to your buddy.</p>
 
 <h1 class="center home_h">Lets talk code</h1>
+<div class="center dash_img_2">
+    
+</div>
+
+
 <%# new posts %>
 <form class="roboto_mono" action="/dashboard" method="post">
   <input type="text" name="title" id="" placeholder="Title of your post"><br>
@@ -46,7 +54,7 @@ Birthday: <%= @player.birthday %>
 </form>
 
 
-
+<%# history of posts %>
 <%all=Post.all%>
 <%total_post = all.size%>
 <h3 class="home_h">History - all posts</h3>
@@ -64,6 +72,7 @@ Birthday: <%= @player.birthday %>
          <% end %>
     <% end %>
 </div>
+<%# history of my posts %>
 <%total_my_post = @user_posts.size%>
 <h3>History - my posts</h3>
 <p class="roboto_mono">My total posts are: <%=total_my_post%></p>
@@ -80,7 +89,7 @@ Birthday: <%= @player.birthday %>
          <% end %>
     <% end %>
 </div>
-
+<%# takes you to the profile page for posts  %>
 <h3 class="home_h">Click a user number to view the posts page</h3>
  <div class="roboto_mono">
  <%if @users!=nil%>

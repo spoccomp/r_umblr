@@ -13,3 +13,22 @@ body {
 .roboto_mono{
     font-family: 'Roboto Mono', monospace;
 }
+hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 3px;
+} 
+.dash_img_1{
+    
+    height: 300px;
+}
+.dash_img_2 {
+    height: 75px;
+    background: url("/matrix.jpeg") no-repeat;
+    background-size: 100%;
+
+}

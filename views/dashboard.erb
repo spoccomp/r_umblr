@@ -56,12 +56,14 @@ Birthday: <%= @player.birthday %>
 
 <%# history of posts %>
 <%all=Post.all%>
+<%twenty=Post.limit(20)%>
+<%twenty_size = twenty.size%>
 <%total_post = all.size%>
 <h3 class="home_h">History - all posts</h3>
-<p class="roboto_mono">There are <%=total_post%> posts</p>
+<p class="roboto_mono">There are <%=total_post%> posts. We will display <%=twenty_size%></p>
 <div class="roboto_mono">
     <%if @posts!=nil%>
-        <% @posts.each do |post| %>
+        <% twenty.each do |post| %>
             Post Id: <%= post.id  %> <br>
             Title: <%= post.title %><br>
             Content: <%= post.content %> <br>

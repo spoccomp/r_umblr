@@ -23,7 +23,7 @@
 <%my_posts = Post.where("users_id = ?", params[:search])%>
 <%my_total_posts = my_posts.size%>
 
-<h3 class="home_h">User posts</h3>
+<h3 class="home_h">User posts history</h3>
 
 
 <p class="roboto_mono"> <%=my_total_posts%> posts. </p>
@@ -42,16 +42,3 @@
 <%total_post = all.size%>
 <%twenty = Post.limit(20)%>
 <%twenty_size = twenty.size%>
-<h3 class="home_h">All Posts</h3>
-<p class="roboto_mono">There are <%=total_post%> posts. We will display <%=twenty_size%>.</p>
-<div class="roboto_mono">     
-        <% twenty.each do |post| %>
-            Post Id: <%= post.id  %> <br>
-            Title: <%= post.title %><br>
-            Content: <%= post.content %> <br>
-            <%x = post.users_id%>
-            User Id: <%=post.users_id%><br>
-            <%user=User.find(x)%>
-            Username: <%= user.username %> <br> <br>    
-         <% end %>
-</div>

@@ -40,6 +40,35 @@ Birthday: <%= @player.birthday %>
 </div>
 <p class="roboto_mono"> Click link to send an email to your buddy.</p>
 
+<%# history of my posts %>
+<%total_my_post = @user_posts.size%>
+<h3>History - my posts</h3>
+<p class="roboto_mono">My total posts are: <%=total_my_post%></p>
+<div class="roboto_mono">
+ <%if @user_posts!=nil%>
+        <% @user_posts.each do |post| %>
+            Post Id: <%= post.id  %> <br>
+            Title: <%= post.title %><br>
+            Content: <%= post.content %> <br>
+            <%x = post.users_id%>
+            User Id: <%=post.users_id%><br>
+            <%user=User.find(x)%>
+            Username: <%= user.username %> <br> <br>    
+         <% end %>
+    <% end %>
+</div>
+<%# takes you to the profile page for posts  %>
+<h3 class="home_h">Click a user number to view the posts page</h3>
+ <div class="roboto_mono">
+ <%if @users!=nil%>
+    <% @users.each do |user| %>
+        Username: <%= user.username %><br>
+        User ID: <a href="/my_posts"><%=user.id %></a> <br><br>
+    <% end %>
+<% end %>
+</div>
+
+
 <h1 class="center home_h">Lets talk code</h1>
 <div class="center dash_img_2">
     
@@ -74,32 +103,6 @@ Birthday: <%= @player.birthday %>
          <% end %>
     <% end %>
 </div>
-<%# history of my posts %>
-<%total_my_post = @user_posts.size%>
-<h3>History - my posts</h3>
-<p class="roboto_mono">My total posts are: <%=total_my_post%></p>
-<div class="roboto_mono">
- <%if @user_posts!=nil%>
-        <% @user_posts.each do |post| %>
-            Post Id: <%= post.id  %> <br>
-            Title: <%= post.title %><br>
-            Content: <%= post.content %> <br>
-            <%x = post.users_id%>
-            User Id: <%=post.users_id%><br>
-            <%user=User.find(x)%>
-            Username: <%= user.username %> <br> <br>    
-         <% end %>
-    <% end %>
-</div>
-<%# takes you to the profile page for posts  %>
-<h3 class="home_h">Click a user number to view the posts page</h3>
- <div class="roboto_mono">
- <%if @users!=nil%>
-    <% @users.each do |user| %>
-        Username: <%= user.username %><br>
-        User ID: <a href="/my_posts"><%=user.id %></a> <br><br>
-    <% end %>
-<% end %>
-</div>
+
 
 
